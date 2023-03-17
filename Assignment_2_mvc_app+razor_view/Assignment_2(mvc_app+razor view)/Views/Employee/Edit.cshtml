@@ -1,0 +1,52 @@
+﻿
+@model Assignment_2_mvc_app_razor_view_.Models.Employee
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script >
+    function ConfirmDelete() {
+       
+            var x = confirm("Are you sure you want to Update?");
+            if (x)
+                return true;
+            else
+                return false;
+    }
+</script>
+<h1>Update The existing entry</h1>
+<br>
+<br>
+@using (Html.BeginForm("Edit","Employee", FormMethod.Post))
+{
+    // @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Employee ID : @Html.DisplayFor(modelItem => modelItem.Id)</h4>
+        <hr>
+        <div class="formRowContainer">
+            <div class="labelContainer"><strong>NAME</strong></div>
+            <div class="valueContainer">
+                @Html.TextBoxFor(model => model.Name,new { @class = "form-control" })
+                @Html.ValidationMessage("Name")
+            </div>
+        </div>
+        <div class="formRowContainer">
+            <div class="labelContainer"><strong>City</strong></div>
+            <div class="valueContainer">
+                @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                @Html.ValidationMessage("City")
+            </div>
+        </div>
+
+        <div class="clearStyle"></div>
+        <div class="buttonContainer">
+            <button onclick="ConfirmDelete()">Update</button>
+        </div>
+    </div>
+}
+
+<br><br>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,49 @@
+﻿@model database_mvc.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('#popupdiv').html() != '') {
+                $("#popupdiv").show();
+            }
+        });
+    </script>
+    @using (Html.BeginForm("Login", "Product", FormMethod.Post))
+    {
+        
+
+
+            @Html.ValidationSummary(true)
+
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Username)</td>
+                    <td>@Html.TextBoxFor(a => a.Username)</td>
+                    <td>@Html.ValidationMessageFor(a => a.Username)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(a => a.Password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(a => a.Password)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+
+        }
+    </div>

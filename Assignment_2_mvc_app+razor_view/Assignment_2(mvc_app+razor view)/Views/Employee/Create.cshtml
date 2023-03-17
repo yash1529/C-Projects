@@ -1,0 +1,48 @@
+﻿@model Assignment_2_mvc_app_razor_view_.Models.Employee
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Employee</h1>
+<br>
+<br>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Employee</h4>
+        <hr>
+
+        <div class="formRowContainer">
+            <div class="labelContainer"><strong>ID</strong></div>
+            <div class="valueContainer">
+                @Html.TextBoxFor(model => model.Id,new { placeholder ="Enter your Id"})
+                @Html.ValidationMessage("ID")
+            </div>
+        </div>
+        <div class="formRowContainer">
+            <div class="labelContainer"><strong>NAME</strong></div>
+            <div class="valueContainer">
+                @Html.TextBoxFor(model => model.Name,new { placeholder="Enter your Name"})
+                @Html.ValidationMessage("Name")
+            </div>
+        </div>
+        <div class="formRowContainer">
+            <div class="labelContainer"><strong>City</strong></div>
+            <div class="valueContainer">
+                @Html.TextBoxFor(model => model.City, new { placeholder = "Enter your City" })
+                @Html.ValidationMessage("City")
+            </div>
+        </div>
+
+        <div class="clearStyle"></div>
+        <div class="buttonContainer">
+            <button>Add</button>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
