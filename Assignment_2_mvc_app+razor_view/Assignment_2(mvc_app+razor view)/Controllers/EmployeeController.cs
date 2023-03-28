@@ -49,7 +49,7 @@ namespace Assignment_2_mvc_app_razor_view_.Controllers
         }
         
    
-        
+        //here only HttpGet and HttpPost works
         public ActionResult Delete(int id)
         {
             Employee obj = employees.Where(x => x.Id == id).FirstOrDefault();
